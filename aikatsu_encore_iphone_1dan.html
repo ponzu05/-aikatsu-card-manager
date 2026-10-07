@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ff78b7">
+<title>アイカツ！アンコール カード管理｜1弾</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff7fc;color:#4a3b46;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}
+body{padding-bottom:32px}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #f1dce9;padding:14px 14px 12px}
+h1{font-size:19px;margin:0 0 3px;font-weight:800}
+.sub{font-size:12px;color:#9a8290}
+.controls{padding:12px 12px 4px;position:sticky;top:77px;z-index:4;background:#fff7fc}
+.search{width:100%;height:48px;border:2px solid #f1b6d4;border-radius:15px;background:white;padding:0 15px;font-size:16px;outline:none}
+.search:focus{border-color:#ff78b7}
+.row{display:flex;gap:7px;overflow-x:auto;padding:9px 0 5px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+button{border:1px solid #e8cadb;background:#fff;border-radius:999px;padding:8px 12px;white-space:nowrap;font-size:13px;color:#604c59}
+button.active{background:#ff78b7;color:#fff;border-color:#ff78b7;font-weight:700}
+.info{display:flex;justify-content:space-between;align-items:center;padding:8px 13px;font-size:13px;color:#806a77}
+.reset{color:#d84f91;background:#fff0f7;border-color:#f5bfd9}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:8px 10px 20px}
+.card{background:#fff;border:1px solid #eadde5;border-radius:14px;padding:7px;box-shadow:0 2px 8px rgba(100,60,90,.06);min-width:0}
+.card-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:#76616e;padding:1px 2px 6px}
+.rarity{border-radius:6px;padding:2px 5px;font-size:10px}
+.PR{background:#fff0a8;color:#8b6800} .ER{background:#e8d8ff;color:#6c42a3} .R{background:#ffe0ed;color:#b43d70} .N{background:#eee;color:#777}
+.card img{width:100%;display:block;border-radius:9px;background:#f7f3f5;aspect-ratio:0.7;object-fit:contain}
+.image-fallback{aspect-ratio:.7;display:flex;align-items:center;justify-content:center;text-align:center;background:#f7f3f5;border-radius:9px;color:#d84f91;font-size:12px;text-decoration:none}
+.owned{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:7px;font-size:12px;color:#725e69;user-select:none}
+.owned input{width:18px;height:18px;accent-color:#ff78b7}
+.hidden{display:none!important}
+.empty{grid-column:1/-1;text-align:center;padding:50px 15px;color:#8d7885}
+.note{font-size:11px;color:#9a8791;text-align:center;padding:0 20px;line-height:1.6}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1000px;margin:auto}.controls,.info{max-width:1000px;margin:auto}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎀 アイカツ！アンコール カード管理</h1>
+  <div class="sub">第1弾 E1-01〜E1-85｜iPhone向け</div>
+</header>
+
+<section class="controls">
+  <input id="search" class="search" type="search" placeholder="🔎 カード番号・レアリティで検索（例：E1-51 / PR）">
+  <div class="row" id="filters">
+    <button class="active" data-filter="all">すべて</button>
+    <button data-filter="PR">PR</button>
+    <button data-filter="ER">ER</button>
+    <button data-filter="R">R</button>
+    <button data-filter="N">N</button>
+    <button data-filter="owned">持ってる</button>
+    <button data-filter="unowned">持ってない</button>
+  </div>
+</section>
+
+<div class="info">
+  <strong id="count">85枚</strong>
+  <button class="reset" id="reset">所持チェックをリセット</button>
+</div>
+
+<main class="grid" id="grid">
+<article class="card" data-no="E1-01" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-01</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-01_PR.webp"
+           alt="アイカツ！アンコール E1-01 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-01_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-01"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-02" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-02</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-02_PR.webp"
+           alt="アイカツ！アンコール E1-02 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-02_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-02"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-03" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-03</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-03_PR.webp"
+           alt="アイカツ！アンコール E1-03 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-03_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-03"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-04" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-04</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-04_PR.webp"
+           alt="アイカツ！アンコール E1-04 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-04_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-04"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-05" data-rarity="R">
+      <div class="card-top">
+        <span>E1-05</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-05_R.webp"
+           alt="アイカツ！アンコール E1-05 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-05_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-05"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-06" data-rarity="R">
+      <div class="card-top">
+        <span>E1-06</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-06_R.webp"
+           alt="アイカツ！アンコール E1-06 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-06_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-06"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-07" data-rarity="R">
+      <div class="card-top">
+        <span>E1-07</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-07_R.webp"
+           alt="アイカツ！アンコール E1-07 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-07_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-07"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-08" data-rarity="R">
+      <div class="card-top">
+        <span>E1-08</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-08_R.webp"
+           alt="アイカツ！アンコール E1-08 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-08_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-08"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-09" data-rarity="R">
+      <div class="card-top">
+        <span>E1-09</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-09_R.webp"
+           alt="アイカツ！アンコール E1-09 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-09_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-09"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-10" data-rarity="R">
+      <div class="card-top">
+        <span>E1-10</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-10_R.webp"
+           alt="アイカツ！アンコール E1-10 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-10_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-10"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-11" data-rarity="R">
+      <div class="card-top">
+        <span>E1-11</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-11_R.webp"
+           alt="アイカツ！アンコール E1-11 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-11_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-11"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-12" data-rarity="R">
+      <div class="card-top">
+        <span>E1-12</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-12_R.webp"
+           alt="アイカツ！アンコール E1-12 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-12_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-12"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-13" data-rarity="R">
+      <div class="card-top">
+        <span>E1-13</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-13_R.webp"
+           alt="アイカツ！アンコール E1-13 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-13_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-13"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-14" data-rarity="R">
+      <div class="card-top">
+        <span>E1-14</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-14_R.webp"
+           alt="アイカツ！アンコール E1-14 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-14_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-14"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-15" data-rarity="R">
+      <div class="card-top">
+        <span>E1-15</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-15_R.webp"
+           alt="アイカツ！アンコール E1-15 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-15_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-15"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-16" data-rarity="R">
+      <div class="card-top">
+        <span>E1-16</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-16_R.webp"
+           alt="アイカツ！アンコール E1-16 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-16_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-16"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-17" data-rarity="R">
+      <div class="card-top">
+        <span>E1-17</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-17_R.webp"
+           alt="アイカツ！アンコール E1-17 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-17_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-17"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-18" data-rarity="R">
+      <div class="card-top">
+        <span>E1-18</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-18_R.webp"
+           alt="アイカツ！アンコール E1-18 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-18_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-18"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-19" data-rarity="R">
+      <div class="card-top">
+        <span>E1-19</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-19_R.webp"
+           alt="アイカツ！アンコール E1-19 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-19_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-19"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-20" data-rarity="R">
+      <div class="card-top">
+        <span>E1-20</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-20_R.webp"
+           alt="アイカツ！アンコール E1-20 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-20_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-20"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-21" data-rarity="N">
+      <div class="card-top">
+        <span>E1-21</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-21_N.webp"
+           alt="アイカツ！アンコール E1-21 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-21_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-21"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-22" data-rarity="N">
+      <div class="card-top">
+        <span>E1-22</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-22_N.webp"
+           alt="アイカツ！アンコール E1-22 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-22_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-22"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-23" data-rarity="N">
+      <div class="card-top">
+        <span>E1-23</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-23_N.webp"
+           alt="アイカツ！アンコール E1-23 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-23_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-23"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-24" data-rarity="N">
+      <div class="card-top">
+        <span>E1-24</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-24_N.webp"
+           alt="アイカツ！アンコール E1-24 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-24_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-24"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-25" data-rarity="N">
+      <div class="card-top">
+        <span>E1-25</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-25_N.webp"
+           alt="アイカツ！アンコール E1-25 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-25_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-25"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-26" data-rarity="N">
+      <div class="card-top">
+        <span>E1-26</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-26_N.webp"
+           alt="アイカツ！アンコール E1-26 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-26_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-26"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-27" data-rarity="N">
+      <div class="card-top">
+        <span>E1-27</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-27_N.webp"
+           alt="アイカツ！アンコール E1-27 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-27_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-27"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-28" data-rarity="N">
+      <div class="card-top">
+        <span>E1-28</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-28_N.webp"
+           alt="アイカツ！アンコール E1-28 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-28_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-28"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-29" data-rarity="N">
+      <div class="card-top">
+        <span>E1-29</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-29_N.webp"
+           alt="アイカツ！アンコール E1-29 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-29_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-29"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-30" data-rarity="ER">
+      <div class="card-top">
+        <span>E1-30</span><span class="rarity ER">ER</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-30_ER.webp"
+           alt="アイカツ！アンコール E1-30 ER"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-30_ER.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-30"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-31" data-rarity="ER">
+      <div class="card-top">
+        <span>E1-31</span><span class="rarity ER">ER</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-31_ER.webp"
+           alt="アイカツ！アンコール E1-31 ER"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-31_ER.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-31"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-32" data-rarity="ER">
+      <div class="card-top">
+        <span>E1-32</span><span class="rarity ER">ER</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-32_ER.webp"
+           alt="アイカツ！アンコール E1-32 ER"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-32_ER.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-32"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-33" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-33</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-33_PR.webp"
+           alt="アイカツ！アンコール E1-33 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-33_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-33"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-34" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-34</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-34_PR.webp"
+           alt="アイカツ！アンコール E1-34 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-34_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-34"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-35" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-35</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-35_PR.webp"
+           alt="アイカツ！アンコール E1-35 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-35_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-35"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-36" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-36</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-36_PR.webp"
+           alt="アイカツ！アンコール E1-36 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-36_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-36"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-37" data-rarity="R">
+      <div class="card-top">
+        <span>E1-37</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-37_R.webp"
+           alt="アイカツ！アンコール E1-37 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-37_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-37"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-38" data-rarity="R">
+      <div class="card-top">
+        <span>E1-38</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-38_R.webp"
+           alt="アイカツ！アンコール E1-38 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-38_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-38"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-39" data-rarity="R">
+      <div class="card-top">
+        <span>E1-39</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-39_R.webp"
+           alt="アイカツ！アンコール E1-39 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-39_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-39"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-40" data-rarity="R">
+      <div class="card-top">
+        <span>E1-40</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-40_R.webp"
+           alt="アイカツ！アンコール E1-40 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-40_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-40"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-41" data-rarity="N">
+      <div class="card-top">
+        <span>E1-41</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-41_N.webp"
+           alt="アイカツ！アンコール E1-41 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-41_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-41"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-42" data-rarity="N">
+      <div class="card-top">
+        <span>E1-42</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-42_N.webp"
+           alt="アイカツ！アンコール E1-42 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-42_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-42"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-43" data-rarity="N">
+      <div class="card-top">
+        <span>E1-43</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-43_N.webp"
+           alt="アイカツ！アンコール E1-43 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-43_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-43"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-44" data-rarity="N">
+      <div class="card-top">
+        <span>E1-44</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-44_N.webp"
+           alt="アイカツ！アンコール E1-44 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-44_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-44"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-45" data-rarity="N">
+      <div class="card-top">
+        <span>E1-45</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-45_N.webp"
+           alt="アイカツ！アンコール E1-45 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-45_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-45"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-46" data-rarity="N">
+      <div class="card-top">
+        <span>E1-46</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-46_N.webp"
+           alt="アイカツ！アンコール E1-46 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-46_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-46"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-47" data-rarity="N">
+      <div class="card-top">
+        <span>E1-47</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-47_N.webp"
+           alt="アイカツ！アンコール E1-47 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-47_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-47"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-48" data-rarity="N">
+      <div class="card-top">
+        <span>E1-48</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-48_N.webp"
+           alt="アイカツ！アンコール E1-48 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-48_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-48"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-49" data-rarity="N">
+      <div class="card-top">
+        <span>E1-49</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-49_N.webp"
+           alt="アイカツ！アンコール E1-49 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-49_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-49"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-50" data-rarity="ER">
+      <div class="card-top">
+        <span>E1-50</span><span class="rarity ER">ER</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-50_ER.webp"
+           alt="アイカツ！アンコール E1-50 ER"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-50_ER.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-50"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-51" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-51</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-51_PR.webp"
+           alt="アイカツ！アンコール E1-51 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-51_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-51"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-52" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-52</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-52_PR.webp"
+           alt="アイカツ！アンコール E1-52 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-52_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-52"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-53" data-rarity="R">
+      <div class="card-top">
+        <span>E1-53</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-53_R.webp"
+           alt="アイカツ！アンコール E1-53 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-53_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-53"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-54" data-rarity="R">
+      <div class="card-top">
+        <span>E1-54</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-54_R.webp"
+           alt="アイカツ！アンコール E1-54 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-54_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-54"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-55" data-rarity="R">
+      <div class="card-top">
+        <span>E1-55</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-55_R.webp"
+           alt="アイカツ！アンコール E1-55 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-55_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-55"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-56" data-rarity="R">
+      <div class="card-top">
+        <span>E1-56</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-56_R.webp"
+           alt="アイカツ！アンコール E1-56 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-56_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-56"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-57" data-rarity="R">
+      <div class="card-top">
+        <span>E1-57</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-57_R.webp"
+           alt="アイカツ！アンコール E1-57 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-57_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-57"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-58" data-rarity="R">
+      <div class="card-top">
+        <span>E1-58</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-58_R.webp"
+           alt="アイカツ！アンコール E1-58 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-58_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-58"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-59" data-rarity="R">
+      <div class="card-top">
+        <span>E1-59</span><span class="rarity R">R</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-59_R.webp"
+           alt="アイカツ！アンコール E1-59 R"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-59_R.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-59"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-60" data-rarity="N">
+      <div class="card-top">
+        <span>E1-60</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-60_N.webp"
+           alt="アイカツ！アンコール E1-60 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-60_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-60"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-61" data-rarity="N">
+      <div class="card-top">
+        <span>E1-61</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-61_N.webp"
+           alt="アイカツ！アンコール E1-61 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-61_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-61"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-62" data-rarity="N">
+      <div class="card-top">
+        <span>E1-62</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-62_N.webp"
+           alt="アイカツ！アンコール E1-62 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-62_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-62"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-63" data-rarity="N">
+      <div class="card-top">
+        <span>E1-63</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-63_N.webp"
+           alt="アイカツ！アンコール E1-63 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-63_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-63"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-64" data-rarity="N">
+      <div class="card-top">
+        <span>E1-64</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-64_N.webp"
+           alt="アイカツ！アンコール E1-64 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-64_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-64"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-65" data-rarity="N">
+      <div class="card-top">
+        <span>E1-65</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-65_N.webp"
+           alt="アイカツ！アンコール E1-65 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-65_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-65"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-66" data-rarity="N">
+      <div class="card-top">
+        <span>E1-66</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-66_N.webp"
+           alt="アイカツ！アンコール E1-66 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-66_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-66"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-67" data-rarity="N">
+      <div class="card-top">
+        <span>E1-67</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-67_N.webp"
+           alt="アイカツ！アンコール E1-67 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-67_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-67"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-68" data-rarity="N">
+      <div class="card-top">
+        <span>E1-68</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-68_N.webp"
+           alt="アイカツ！アンコール E1-68 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-68_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-68"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-69" data-rarity="N">
+      <div class="card-top">
+        <span>E1-69</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-69_N.webp"
+           alt="アイカツ！アンコール E1-69 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-69_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-69"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-70" data-rarity="N">
+      <div class="card-top">
+        <span>E1-70</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-70_N.webp"
+           alt="アイカツ！アンコール E1-70 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-70_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-70"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-71" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-71</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-71_PR.webp"
+           alt="アイカツ！アンコール E1-71 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-71_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-71"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-72" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-72</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-72_PR.webp"
+           alt="アイカツ！アンコール E1-72 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-72_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-72"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-73" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-73</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-73_PR.webp"
+           alt="アイカツ！アンコール E1-73 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-73_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-73"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-74" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-74</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-74_PR.webp"
+           alt="アイカツ！アンコール E1-74 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-74_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-74"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-75" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-75</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-75_PR.webp"
+           alt="アイカツ！アンコール E1-75 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-75_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-75"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-76" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-76</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-76_PR.webp"
+           alt="アイカツ！アンコール E1-76 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-76_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-76"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-77" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-77</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-77_PR.webp"
+           alt="アイカツ！アンコール E1-77 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-77_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-77"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-78" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-78</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-78_PR.webp"
+           alt="アイカツ！アンコール E1-78 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-78_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-78"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-79" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-79</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-79_PR.webp"
+           alt="アイカツ！アンコール E1-79 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-79_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-79"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-80" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-80</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-80_PR.webp"
+           alt="アイカツ！アンコール E1-80 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-80_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-80"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-81" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-81</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-81_PR.webp"
+           alt="アイカツ！アンコール E1-81 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-81_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-81"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-82" data-rarity="PR">
+      <div class="card-top">
+        <span>E1-82</span><span class="rarity PR">PR</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-82_PR.webp"
+           alt="アイカツ！アンコール E1-82 PR"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-82_PR.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-82"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-83" data-rarity="N">
+      <div class="card-top">
+        <span>E1-83</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-83_N.webp"
+           alt="アイカツ！アンコール E1-83 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-83_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-83"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-84" data-rarity="N">
+      <div class="card-top">
+        <span>E1-84</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-84_N.webp"
+           alt="アイカツ！アンコール E1-84 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-84_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-84"><span>持ってる</span></label>
+    </article>
+<article class="card" data-no="E1-85" data-rarity="N">
+      <div class="card-top">
+        <span>E1-85</span><span class="rarity N">N</span>
+      </div>
+      <img src="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-85_N.webp"
+           alt="アイカツ！アンコール E1-85 N"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <a class="image-fallback" style="display:none"
+         href="https://dcd.aikatsu.com/encore/images/cardlist/card/E1-85_N.webp"
+         target="_blank" rel="noopener">公式画像を開く</a>
+      <label class="owned"><input type="checkbox" class="owned-check" data-card="E1-85"><span>持ってる</span></label>
+    </article>
+</main>
+
+<p class="note">
+カード画像は公式サイトの画像を参照しています。公式サイトのカードリストでは第1弾が85枚掲載されています。
+</p>
+
+<script>
+(function(){
+  const cards=[...document.querySelectorAll('.card')];
+  const search=document.getElementById('search');
+  const count=document.getElementById('count');
+  let filter='all';
+
+  function load(){
+    try{
+      cards.forEach(c=>{
+        const key='aikatsu-owned-'+c.dataset.no;
+        const checked=localStorage.getItem(key)==='1';
+        c.querySelector('.owned-check').checked=checked;
+      });
+    }catch(e){}
+  }
+
+  function save(cb){
+    try{localStorage.setItem('aikatsu-owned-'+cb.dataset.card,cb.checked?'1':'0')}catch(e){}
+  }
+
+  function render(){
+    const q=search.value.trim().toLowerCase();
+    let shown=0;
+    cards.forEach(c=>{
+      const no=c.dataset.no.toLowerCase();
+      const rarity=c.dataset.rarity.toLowerCase();
+      const owned=c.querySelector('.owned-check').checked;
+      const text=(no+' '+rarity).includes(q);
+      let okFilter=filter==='all' ||
+        filter===c.dataset.rarity ||
+        (filter==='owned'&&owned) ||
+        (filter==='unowned'&&!owned);
+      const show=text&&okFilter;
+      c.classList.toggle('hidden',!show);
+      if(show) shown++;
+    });
+    count.textContent=shown+'枚';
+  }
+
+  document.querySelectorAll('#filters button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    filter=b.dataset.filter;
+    render();
+  }));
+  search.addEventListener('input',render);
+  document.querySelectorAll('.owned-check').forEach(cb=>cb.addEventListener('change',()=>{save(cb);render()}));
+  document.getElementById('reset').addEventListener('click',()=>{
+    if(confirm('持っているチェックを全部リセットしますか？')){
+      try{cards.forEach(c=>localStorage.removeItem('aikatsu-owned-'+c.dataset.no))}catch(e){}
+      cards.forEach(c=>c.querySelector('.owned-check').checked=false);
+      render();
+    }
+  });
+  load();
+  render();
+})();
+</script>
+</body>
+</html>
